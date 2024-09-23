@@ -1,4 +1,5 @@
 
+
 function converter(price, currencyForSale, currencyForBuy){
 
     let rubToUsd = 92.58;
