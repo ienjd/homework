@@ -1,22 +1,10 @@
-let hasLicense = true;
-let age = 18;
-let isSober = true;
+const hasLicense = true;
+const age = 18;
+const isDrink = true;
 
-let canDrive = hasLicense && age >= 18 && isSober;
+const canDrive = hasLicense && age >= 18 && !isDrink;
 
-switch (canDrive){
-
-    case true:
-
-        console.log("может");
-            break;
-
-    case false:
-
-        console.log("не может")
-            break;
-
-}
+console.log(`Водитель ${canDrive ? "может" : "не может"} сесть за руль`)
 
 
 

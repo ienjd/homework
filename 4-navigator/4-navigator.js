@@ -7,7 +7,7 @@ let addressLong = 99;
 let distanceLat = Math.abs(positionLat - addressLat);
 let distanceLong = Math.abs(positionLong - addressLong);
 
-let distance = Math.sqrt((distanceLat ** 2) + (distanceLong ** 2));
+const distance = ((distanceLat ** 2) + (distanceLong ** 2)) ** 0.5  
 
 console.log(distance.toFixed(2));
 
