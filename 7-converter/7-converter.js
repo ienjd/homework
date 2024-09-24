@@ -13,15 +13,20 @@ function converter(price, currencyForSale, currencyForBuy){
 
     if ((currencyForSale === "rub") && (currencyForBuy === "usd")) { console.log(price * usdToRub);
 
-    } else if ((currencyForSale === "rub") && (currencyForBuy === "eur")) { console.log(price * eurToRub);
+    } else if ((currencyForSale === "rub") && (currencyForBuy === "eur")) {
+         console.log(price * eurToRub);
 
-    } else if ((currencyForSale === "rub") && (currencyForBuy === "kzt")) { console.log(price * kztToRub); 
+    } else if ((currencyForSale === "rub") && (currencyForBuy === "kzt")) {
+         console.log(price * kztToRub); 
 
-    } else if ((currencyForSale === "usd") && (currencyForBuy === "rub")) { console.log(price * rubToUsd);
+    } else if ((currencyForSale === "usd") && (currencyForBuy === "rub")) {
+         console.log(price * rubToUsd);
 
-    } else if ((currencyForSale === "eur") && (currencyForBuy === "rub")) { console.log(price * rubToEur);
+    } else if ((currencyForSale === "eur") && (currencyForBuy === "rub")) {
+         console.log(price * rubToEur);
 
-    } else if ((currencyForSale === "kzt") && (currencyForBuy === "rub")) { console.log(price * rubToKzt);
+    } else if ((currencyForSale === "kzt") && (currencyForBuy === "rub")) {
+         console.log(price * rubToKzt);
 
     } else { console.log(null);
 
