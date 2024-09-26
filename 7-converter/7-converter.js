@@ -2,13 +2,13 @@
 
 function converter(price, currencyForSale, currencyForBuy){
 
-    let rubToUsd = 92.58;
-    let rubToEur = 103.38;
-    let rubToKzt = 0.19;
+    const rubToUsd = 92.58;
+    const rubToEur = 103.38;
+    const rubToKzt = 0.19;
 
-    let usdToRub = 0.010801;
-    let eurToRub = 0.009673;
-    let kztToRub = 5.17;
+    const usdToRub = 0.010801;
+    const eurToRub = 0.009673;
+    const kztToRub = 5.17;
 
 
     if ((currencyForSale === "rub") && (currencyForBuy === "usd")) { console.log(price * usdToRub);

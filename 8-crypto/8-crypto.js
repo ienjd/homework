@@ -1,9 +1,9 @@
 
 function enigma(word){
     
-    let charArr = word.split("").reverse();
+    const charArr = word.split("").reverse();
 
-    let firstHalf = charArr.slice(0, charArr.length/2);
+    const firstHalf = charArr.slice(0, charArr.length/2);
 
     const secondHalf = charArr.slice(charArr.length/2, charArr.length);
 
