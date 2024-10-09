@@ -28,41 +28,9 @@ function luhnCheck(cardNumber) {
             console.log(i + " " + cardNumber[i] + " " + character); 
     }
 
-    console.log(sum)
+    return sum % 2 === 0 ? "Верный номер карты" : "Неверный номер карты";
         
     }
-
-    function luhnCheck1(cardNumber) {
-        // Удаляем все пробелы и ненужные символы
-        cardNumber = cardNumber.replace(/\D/g, '');
-        
-        let sum = 0;
-        let alternate = false;
-    
-        // Проходим по цифрам в обратном порядке
-        for (let i = cardNumber.length - 1; i >= 0; i--) {
-            let n = parseInt(cardNumber.charAt(i), 10);
-            
-            // Умножаем каждую вторую цифру на 2
-            if (alternate) {
-                n *= 2;
-                // Если результат больше 9, вычитаем 9
-                if (n > 9) {
-                    n -= 9;
-                }
-            }
-            sum += n;
-            alternate = !alternate;
-            console.log(i + " " + cardNumber[i] + " " + n);
-        }
-    
-    console.log(sum);    
-    }
-    
-
- luhnCheck("2200-7006-2675-0201");
- luhnCheck1("2200-7006-2675-0201");
-
 
 
 
