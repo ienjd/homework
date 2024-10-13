@@ -1,0 +1,45 @@
+const arr = ["22/03/25", "тест", "31-12-1290", "22/03/71", "пробное", "31/12/90", "56-ty-78",
+            "dfghtyas", "23223123123", "03/02/92", "22/03/73", "31-12-91", "hrwfejher", 
+            "09/89-23", "6346hwehd7283", "11/11/11", "7882398sdads", "766677723"];
+
+let isNotWord = arr
+    .filter(arraySymbols => {
+     
+        if (arraySymbols.length !== 8) {
+            return false
+            };
+
+        const isSlash = arraySymbols[2] === "/";
+        const isDash = arraySymbols[2] === "-";
+
+        if (!isSlash && !isDash) {
+            return false
+            };
+
+        const day = parseInt(arraySymbols[0].concat(arraySymbols[1]));
+        const month = parseInt(arraySymbols[3].concat(arraySymbols[4]));
+        const year = parseInt(arraySymbols[6].concat(arraySymbols[7]));
+
+        if (month < 1 || month > 12) {
+            return false
+            };
+
+        const daysInMonth = (month === 2) ? ( (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0) ? 29 : 28 )
+         : [31, 30][(month % 2 === 0 ? 1 : 0)];
+
+        const validDay = (day >= 1 && day <= daysInMonth);
+
+        return validDay && ( 
+            (isSlash && ((month <= 12 && day <= 31) || (day <= 12 && month <= 31))) || 
+            (isDash && ((month <= 12 && day <= 31) || (day <= 12 && month <= 31)))
+        );
+    })
+    .map(element => {
+        return element.split("")
+            .map(char => {
+                return (char === "/" || char === "-") ? "." : char;
+            })
+            .join("");
+    });
+
+console.log(isNotWord);

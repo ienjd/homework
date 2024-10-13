@@ -25,7 +25,7 @@ function luhnCheck(cardNumber) {
 
             sum += character;
             alternate = !alternate;
-            console.log(i + " " + cardNumber[i] + " " + character); 
+            
     }
 
     return sum % 2 === 0 ? "Верный номер карты" : "Неверный номер карты";
