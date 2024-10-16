@@ -1,4 +1,4 @@
-/*верные*/
+
 const cardNumber1 = "5678-4567-8901-2345"
 const cardNumber2 = "5678-4563-4234-2345"
 const cardNumber3 = "5690-4327-8901-2345"
