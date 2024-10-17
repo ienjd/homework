@@ -2,68 +2,81 @@ const arr = ["22/03/25", "тест", "31-12-1290", "22/03/71", "пробное",
             "dfghtyas", "23223123123", "03/02/92", "22/03/73", "31-12-91", "hrwfejher", 
             "09/89-23", "6346hwehd7283", "11/11/11", "7882398sdads", "766677723", "30/12/1990"];
 
-let isNotWord = arr
-    .filter(arraySymbols => {
-     
-        if (arraySymbols.length !== 8) {
-            return false
-            };
+const dateArray = [  
+                '29-02-2024', // true - 2024 високосный год  
+                '29-02-2023', // false - 2023 не високосный год  
+                '02/29/2024', // true - EN формат записи 29-02-2024  
+                '02/29/2023', // false - EN формат записи 29-02-2023  
+                '31-09-2024', // false - 31 сентября не бывает  
+                '30-09-2024', // true - Тут проблем нет - корректная дата  
+                '30d-09m-2024y', // true / false - корректная дата при условии parseInt для валидации числа, при Number - нет  
+                '30.01.2024', // true / false - зависит от парсинга разделителей  
+            ];
 
-        const separator = (arraySymbols[2] === "/") ? "/" : (arraySymbols[2] === "-") ? "-" : null;
+function isNotWord (array) { 
 
-        if (!separator) {
-            return false;
-        }
+    return array
+            .filter(arraySymbols => {
+
+                const separator = (arraySymbols[2] === "/") ? "/" : (arraySymbols[2] === "-") ? "-" : null;
+
+                if (!separator) {
+                    return false;
+                }
         
         
-        const dateParts = arraySymbols.split(separator);
+                const dateParts = arraySymbols.split(separator);
         
 
-        if (dateParts.length !== 3) {
-            return false;
-        }
+                if (dateParts.length !== 3) {
+                    return false;
+                }
         
-        const day = parseInt(dateParts[0], 10);
-        const month = parseInt(dateParts[1], 10);
-        let year = parseInt(dateParts[2], 10);
+                let day, month, year;
+                if (arraySymbols.includes('/')) {
+                    [month, day, year] = arraySymbols.split('/').map(x => parseInt(x, 10));
+                } else if (arraySymbols.includes('-')) {
+                    [day, month, year] = arraySymbols.split('-').map(x => parseInt(x, 10));
+                }    
         
-        if (dateParts[2].length === 2) {
-            year += (year < 50) ? 2000 : 1900; 
-        } else if (dateParts[2].length !== 4) {
-            return false; 
-        }
+                if (dateParts[2].length === 2) {
+                    year += (year < 50) ? 2000 : 1900; 
+                } else if (dateParts[2].length !== 4) {
+                    return false; 
+                }
 
-        if (month < 1 || month > 12) {
-            return false
-            };
+                if (month < 1 || month > 12) {
+                    return false
+                };
 
-        let daysInMonth;
-        switch(month) {
+                let daysInMonth;
+                switch(month) {
             
-            case 1: case 3: case 5: case 7: case 8: case 10: case 12:
-                daysInMonth = 31; 
-                break;
+                    case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                        daysInMonth = 31; 
+                        break;
 
-            case 2:
-                daysInMonth = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0) ? 29 : 28;
-                break;
+                    case 2:
+                        daysInMonth = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0) ? 29 : 28;
+                        break;
 
-            case 4: case 6: case 9: case 11:
-                daysInMonth = 30; 
-                break;
+                    case 4: case 6: case 9: case 11:
+                        daysInMonth = 30; 
+                        break;
 
-            default:
-                return false; 
-            }
+                    default:
+                        return false; 
+                    }
         
-            return (day >= 1 && day <= daysInMonth);
-    })
-    .map(element => {
-        return element.split("")
-            .map(char => {
-                return (char === "/" || char === "-") ? "." : char;
+                    return (day >= 1 && day <= daysInMonth);
             })
-            .join("");
-    });
+            .map(element => {
+                return element.split("")
+                    .map(char => {
+                        return (char === "/" || char === "-") ? "." : char;
+                    })
+                .join("")
+            })
+}
 
-console.log(isNotWord);
+console.log(isNotWord(dateArray));
