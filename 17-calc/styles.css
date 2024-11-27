@@ -1,0 +1,22 @@
+.body{
+    background-color: #1c1b21; 
+    text-align: center; 
+    display: flexbox;
+    flex-direction: flexbox;
+    color: white;
+}
+
+.input{
+    display: block;
+    justify-self: center;
+}
+
+.buttons{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.button{
+    min-width:40px;
+    height: 40px;
+}
